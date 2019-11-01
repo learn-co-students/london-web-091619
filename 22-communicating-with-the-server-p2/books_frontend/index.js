@@ -20,6 +20,7 @@ function renderBooks() {
 }
 
 
+
 function renderBook(book) {
   // Create the div with a class of card that will contain the information of this book.
   const card = document.createElement("div")
