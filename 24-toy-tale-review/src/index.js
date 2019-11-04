@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   function renderToys() {
     fetchToys()
       .then(function(toys){
-          // Iterate through all of the toys and for each one create a div with a class of card, which contains:
+          // Iterate through all of the toys and render each one
           for (let i = 0; i < toys.length; i++) {
             renderToy(toys[i])
           }
@@ -36,22 +36,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // Create a div with a class of card
     const card = document.createElement("div")
     card.classList.add("card")
+    // Populate the card div with:
+    // A h2 containing the toy's name
+    // An img with an src of the toy's image and a class of toy-avatar
+    // A p containing that toy's number of likes
+    // A button containing the text Like <3 with a class of like-btn and an id of that toy's id
     card.innerHTML = `
     <h2>${toy.name}</h2>
     <img src="${toy.image}" class="toy-avatar">
     <p>${toy.likes}</p>
     <button class="like-btn" id="${toy.id}">Like <3</button>
     `
+    // Append the new card div to the toy-collection div
     document.querySelector("#toy-collection").appendChild(card)
+    // Add a click event to the like button so that users can increase that toy's likes by one
     card.children[card.children.length - 1].addEventListener("click", increaseToyLikes)
-    // A h2 containing the toy's name
-    // An img with an src of the toy's image and a class of toy-avatar
-    // A p containing that toy's number of likes
-    // A button containing the text Like <3 with the class of like-btn
   }
 
   // When a user submits the create a toy form:
   document.querySelector(".add-toy-form").addEventListener("submit", function(e){
+    // Prevent the form's default behaviour so that it doesn't submit a POST request and refresh the page
     e.preventDefault()
     // Create a new toy object with the name and image the user typed in the form
     const newToy = {
@@ -68,6 +72,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   })
 
   function createToy(newToy) {
+    // Create a configuration object with the appropriate method and headers and the newly created toy as the body
     const configurationObject = {
       method: "POST",
       headers: {
@@ -84,12 +89,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   // When a user clicks on a toy's like button:
   function increaseToyLikes(e) {
-    // Tell the server to update that toy by increasing its like count by one
+    // Create the body of the request by accessing the liked toy's current likes and increasing them by one
     const updatedToy = {
       likes: parseInt(e.target.previousElementSibling.innerText) + 1
     }
+    // Pass updateToy the body of the request and the id of the toy we want to update so that we can create the correct URL
     updateToy(updatedToy, e.target.id)
-      // When the server responds with the updated toy, find the div for that toy and update its like count
+      // When the server responds with the updated toy, find the div for that toy and update its likes to be the newly increased like count of the updated toy
       .then(function(toy){
         e.target.previousElementSibling.innerText = toy.likes
       })
@@ -110,7 +116,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       })
   }
 
-    renderToys()
+  renderToys()
 
 
 })
