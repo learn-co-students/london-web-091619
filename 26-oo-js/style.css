@@ -1,0 +1,9 @@
+.card{
+	display:inline-block;
+	border-style: double;
+	width: 310px;
+}
+
+img {
+	max-width: 100%;
+}
