@@ -1,0 +1,61 @@
+.App {
+  display: flex;
+}
+
+.sidebar {
+  width: 15rem;
+  min-height: 100vh;
+}
+
+.sidebar.list {
+  background: yellow;
+}
+
+.list > .workout {
+  border: black solid 1px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  position: relative;
+  border-radius: 1rem;
+}
+
+.workout > button {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.exercise-form {
+  border: black solid 1px;
+  width: 95%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.workout-form {
+  border: black solid 1px;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.totaliser.pulse-green {
+  animation: pulse-green 1s;
+}
+
+@keyframes pulse-green {
+  0%   { background: green; }
+  100% { background: rgba(0, 128, 0, 0); }
+}
+.totaliser.pulse-red {
+  animation: pulse-red 1s;
+}
+
+@keyframes pulse-red {
+  0%   { background: red; }
+  100% { background: rgba(128, 0, 0, 0); }
+}

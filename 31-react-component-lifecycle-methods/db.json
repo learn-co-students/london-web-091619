@@ -1,0 +1,36 @@
+{
+  "workouts": [
+    {
+      "id": 1,
+      "name": "v good",
+      "exercises": [
+        {
+          "id": 1,
+          "weight": 10,
+          "count": 10
+        },
+        {
+          "id": 2,
+          "weight": 20,
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "v bad",
+      "exercises": [
+        {
+          "id": 3,
+          "weight": 10,
+          "count": 10
+        },
+        {
+          "id": 4,
+          "weight": 20,
+          "count": 20
+        }
+      ]
+    }
+  ]
+}
