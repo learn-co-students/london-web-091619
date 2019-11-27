@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SushiContainer from "./containers/SushiContainer";
 import Table from "./containers/Table";
+import SushiForm from "./containers/SushiForm";
 
 // Endpoint!
 const API = "http://localhost:3000/sushis";
@@ -10,7 +11,8 @@ class App extends Component {
     sushis: [],
     eatenSushis: [],
     balance: Math.floor(Math.random() * 30) + 10,
-    showUnsufficientFunds: false
+    showUnsufficientFunds: false,
+    showForm: true
   };
 
   componentDidMount() {
@@ -22,6 +24,22 @@ class App extends Component {
         });
       });
   }
+
+  addSushi = newSushi => {
+    fetch(API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newSushi)
+    })
+      .then(res => res.json())
+      .then(sushi =>
+        this.setState({
+          sushis: [...this.state.sushis, sushi]
+        })
+      );
+  };
 
   shouldShowUnsufficientFunds = (sushis, balance) => {
     if (sushis.length === 0) return false;
@@ -76,6 +94,7 @@ class App extends Component {
             <button onClick={() => this.addFunds(50)}>Add $50</button>
           </div>
         )}
+        {this.state.showForm && <SushiForm submitSushi={this.addSushi} />}
         <SushiContainer sushis={sushis} handleSushiClick={this.eatSushi} />
         <Table balance={this.state.balance} plates={this.state.eatenSushis} />
       </div>

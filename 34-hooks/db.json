@@ -1,4 +1,4 @@
-{ 
+{
   "sushis": [
     {
       "id": 1,
@@ -699,6 +699,26 @@
       "img_url": "https://sushistickers.com/img/sushi-slice_75.png",
       "price": 15,
       "created_at": "2018-07-27T18:53:16.516Z"
+    },
+    {
+      "name": "bulb",
+      "price": "10",
+      "id": 101
+    },
+    {
+      "name": "sfdsdf",
+      "price": "2354",
+      "id": 102
+    },
+    {
+      "name": "sdfsdfg",
+      "price": "435",
+      "id": 103
+    },
+    {
+      "name": "sgdrherty",
+      "price": "345456745",
+      "id": 104
     }
   ]
 }
