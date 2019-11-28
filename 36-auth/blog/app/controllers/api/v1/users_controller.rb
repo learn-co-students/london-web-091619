@@ -24,6 +24,14 @@ class Api::V1::UsersController < ApplicationController
         render json: user
     end
 
+    def validate
+        if logged_in
+            render json: { user: UserSerializer.new(@current_user), token: issue_token({ user_id: @current_user.id }) }
+        else
+            render json: { errors: ['Invalid token']}, status: :not_accepted
+        end
+    end
+
     private
 
     def user_params

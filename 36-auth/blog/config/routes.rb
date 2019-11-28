@@ -4,6 +4,7 @@ Rails.application.routes.draw do
         resources :users, only: [:create, :show]
         resources :posts, only: [:create, :show]
         post "/login", to: "users#login"
+        get "/validate", to: "users#validate"
     end
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
